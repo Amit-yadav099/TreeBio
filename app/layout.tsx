@@ -5,8 +5,10 @@ import "./globals.css";
 
 import {ClerkProvider} from '@clerk/nextjs/';
 import { ThemeProvider } from "@/components/ThemeProvider";
+import {Toaster} from 'sonner';
 
 const geistSans = Geist({
+
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
@@ -28,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 
@@ -38,7 +40,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange>
 
-
+        <Toaster/>
         {children}
           </ThemeProvider>
       </body>
